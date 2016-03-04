@@ -13,7 +13,7 @@ public class LoginModel {
     public static final String USR_TBL_SELECT = "SELECT * FROM tbl_user";
 
     private String message="";
-    private String message2;
+    private String message2="temp";
     private String driverName = "org.gjt.mm.mysql.Driver";
 
     public String getMessage2() throws ClassNotFoundException, SQLException {
@@ -33,10 +33,10 @@ public class LoginModel {
         try{
             tx = session.beginTransaction();
             List userDetails;
-            userDetails = session.createQuery("FROM learnit.model.UserDetails").list();
+            userDetails = session.createQuery("FROM UserDetails").list();
             for (Iterator iterator =
                  userDetails.iterator(); iterator.hasNext();){
-                learnit.model.UserDetails userdetails = (learnit.model.UserDetails) iterator.next();
+                UserDetails userdetails = (UserDetails) iterator.next();
                 message = String.format("UserName is this %s User Id is %s Email Id is %s", userdetails.getUserName(),
                         userdetails.getId(), userdetails.getEmail());
 
